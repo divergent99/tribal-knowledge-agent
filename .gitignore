@@ -1,0 +1,17 @@
+# Environment variables (tokens, API keys - never commit these)
+.env
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
