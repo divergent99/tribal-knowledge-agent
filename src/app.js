@@ -1,3 +1,13 @@
+// Safety net: don't let an unexpected error (like a socket-mode edge case)
+// take down the whole process. Log it and keep running - Slack's client
+// will handle its own reconnection internally in newer @slack/bolt versions.
+process.on("uncaughtException", (err) => {
+  console.error("Uncaught exception (process staying alive):", err);
+});
+process.on("unhandledRejection", (err) => {
+  console.error("Unhandled rejection (process staying alive):", err);
+});
+
 require("dotenv").config();
 const { App } = require("@slack/bolt");
 const { searchWorkspace } = require("./rts");
